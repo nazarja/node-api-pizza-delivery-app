@@ -9,11 +9,11 @@ const http = require('http');
 const https = require('https');
 const url = require('url');
 const router = require('./router');
-const helpers = require('../lib/helpers');
 const { StringDecoder } = require('string_decoder');
+const helpers = require('../lib/helpers');
 
 /*=============================
-Server Creation
+    Server Creation
 =============================*/
 
 const server = {};
@@ -24,7 +24,7 @@ server.httpsServer = https.createServer(server.httpsServerOptions, (req, res) =>
 server.httpsServerOptions = { key: fs.readFileSync(path.join(__dirname, '../https/key.pem')), cert: fs.readFileSync(path.join(__dirname, '../https/cert.pem')) };
 
 /*=============================
-  Server Request Logic
+    Server Request Logic
 =============================*/
 
 server.unifiedServer = (req, res) => {
@@ -63,6 +63,7 @@ server.unifiedServer = (req, res) => {
             payload = typeof (payload) === 'object' ? payload : {};
             payload = JSON.stringify(payload);
 
+            // end request and send back header and payload / response
             res.writeHead(statusCode);
             res.end(payload);
         });
@@ -70,7 +71,7 @@ server.unifiedServer = (req, res) => {
 };
 
 /*=============================
-  Init && Export Server
+    Init && Export Server
 =============================*/
 
 // initialise server object and start listening on ports
