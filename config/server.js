@@ -54,7 +54,7 @@ server.unifiedServer = (req, res) => {
 
         // construct request param object
         const requestData = {
-            headers, method, path: parsedPath, query, payload: helpers.parseJsonToBuffer(buffer)
+            headers, method, path: parsedPath, query, payload: helpers.parseJsonToObject(buffer)
         };
 
         // handle route request

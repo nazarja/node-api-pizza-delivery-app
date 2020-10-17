@@ -10,7 +10,8 @@ environments.staging = {
         http: 3000,
         https: 3001
     },
-    env: 'staging'
+    env: 'staging',
+    secret: 'youwillneverguess'
 };
 
 // production config object
@@ -19,7 +20,8 @@ environments.production = {
         http: 5000,
         https: 5001
     },
-    env: 'production'
+    env: 'production',
+    secret: 'youwillneverguess'
 };
 
 // determine if server started with env variable
