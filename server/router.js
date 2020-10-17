@@ -13,9 +13,9 @@ const router = {
     'auth/login': (requestData, callback) => executeRequest(auth, requestData, callback),
     'auth/logout': (requestData, callback) => executeRequest(auth, requestData, callback),
     users: (requestData, callback) => executeRequest(users, requestData, callback),
+    tokens: (requestData, callback) => executeRequest(tokens, requestData, callback),
     cart: (requestData, callback) => executeRequest(cart, requestData, callback),
     menu: (requestData, callback) => executeRequest(menu, requestData, callback),
-    tokens: (requestData, callback) => executeRequest(tokens, requestData, callback),
     ping: (data, cb) => cb(200),
     notfound: (data, cb) => cb(404),
 };

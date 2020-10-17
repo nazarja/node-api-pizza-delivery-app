@@ -101,18 +101,23 @@ tokens.delete = (data, callback) => {
     Verify token
 =============================*/
 
-tokens.verifyToken = (tokenID, email, callback) => {
-    
-    // find and read file content
-    libData.read('tokens', tokenID, (err, fileData) => {
-        if (!err && fileData) {
+// token checker
+tokens.tokenCheck = token =>   typeof (token) === 'string' ? token : false;
 
-            // check that tokens email matches users email and token is not expired
-            if (fileData.email === email && fileData.expiry > Date.now()) callback(true);
-            else callback(false);
-        }
-        else callback(false);
-    });
+// check valid token and users
+tokens.authCheck = (token, email, callback) => {
+    if (tokens.tokenCheck(token) && helpers.stringChecker(email, 6)) {
+        libData.read('tokens', token, (err, fileData) => {
+            if (!err && fileData) {
+                
+                // check that tokens email matches users email and token is not expired
+                if (fileData.email === email && fileData.expiry > Date.now()) callback(false);
+                else callback(err);
+            }
+            else callback(err);
+        });
+    }
+    else callback(405, 'error: not authorized or invalid fields');
 };
 
 // exports
