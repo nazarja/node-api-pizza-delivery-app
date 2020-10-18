@@ -51,7 +51,7 @@ auth.login = (data, callback) => {
 // logout takes a token and  deletes it, the user must login again
 auth.logout = (data, callback) => { 
     tokens.delete(data, err => {
-        if (!err) callback(200);
+        if (!err) callback(200, 'You have been logged out successfully.');
         else callback(500, {'logout error': 'error logging out user'});
     });
 };

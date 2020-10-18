@@ -120,5 +120,20 @@ tokens.authCheck = (token, email, callback) => {
     else callback(405, 'error: not authorized or invalid fields');
 };
 
+tokens.verifyToken = (token, callback) => {
+    if (tokens.tokenCheck(token)) {
+        libData.read('tokens', token, (err, fileData) => {
+            if (!err && fileData) {
+                
+                // check that token is not expired
+                if (fileData.expiry > Date.now()) callback(false);
+                else callback(401, 'token has expired');
+            }
+            else callback(401, 'token missing');
+        });
+    }
+    else callback(405, 'error: token formatted incorrectly or missing');
+}
+
 // exports
 module.exports = tokens;

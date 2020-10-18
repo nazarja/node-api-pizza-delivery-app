@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Margherita",
+        "price": 6.99
+    },
+    {
+        "name": "La Reine",
+        "price": 8.99
+    },
+    {
+        "name": "Fiorentina",
+        "price": 9.99
+    },
+    {
+        "name": "Veneziana",
+        "price": 9.99
+    },
+    {
+        "name": "Sloppy Giuseppe",
+        "price": 10.99
+    },
+    {
+        "name": "Diavolo Hot",
+        "price": 11.99
+    },
+    {
+        "name": "Padana",
+        "price": 7.99
+    },
+    {
+        "name": "Pollo Forza",
+        "price": 8.99
+    }
+]
