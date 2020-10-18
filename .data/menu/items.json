@@ -1,34 +1,49 @@
 [
     {
+        "id": 0,
         "name": "Margherita",
         "price": 6.99
     },
     {
+        "id": 1,
         "name": "La Reine",
-        "price": 8.99
+        "price": 8.99,
+        "quantity": 1
     },
     {
+        "id": 2,
         "name": "Fiorentina",
-        "price": 9.99
+        "price": 9.99,
+        "quantity": 1
     },
     {
+        "id": 3,
         "name": "Veneziana",
-        "price": 9.99
+        "price": 9.99,
+        "quantity": 1
     },
     {
+        "id": 4,
         "name": "Sloppy Giuseppe",
-        "price": 10.99
+        "price": 10.99,
+        "quantity": 1
     },
     {
+        "id": 5,
         "name": "Diavolo Hot",
-        "price": 11.99
+        "price": 11.99,
+        "quantity": 1
     },
     {
+        "id": 6,
         "name": "Padana",
-        "price": 7.99
+        "price": 7.99,
+        "quantity": 1
     },
     {
+        "id": 7,
         "name": "Pollo Forza",
-        "price": 8.99
+        "price": 8.99,
+        "quantity": 1
     }
 ]

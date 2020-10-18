@@ -1,1 +1,1 @@
-{"name":"diddley bob","email":"hello@gmail.com","address":"55 some street","password":"e53c98c8359bce6d5a70af73ea5eefd5117a2ab4df6947c0dd41cb72607e0d8e","orders":["1602954962641"]}
+{"name":"sean murphy","email":"hello@gmail.com","address":"55 some street","password":"e53c98c8359bce6d5a70af73ea5eefd5117a2ab4df6947c0dd41cb72607e0d8e","orders":["1602954962641"],"cart":[{"id":6,"name":"Padana","price":7.99,"quantity":3},{"id":0,"name":"Margherita","price":6.99}]}

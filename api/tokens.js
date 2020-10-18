@@ -111,7 +111,7 @@ tokens.authCheck = (token, email, callback) => {
             if (!err && fileData) {
                 
                 // check that tokens email matches users email and token is not expired
-                if (fileData.email === email && fileData.expiry > Date.now()) callback(false);
+                if (fileData.email === email && fileData.expiry > Date.now() - (1000 * 60 * 60 * 24)) callback(false, fileData);
                 else callback(err);
             }
             else callback(err);
@@ -124,9 +124,8 @@ tokens.verifyToken = (token, callback) => {
     if (tokens.tokenCheck(token)) {
         libData.read('tokens', token, (err, fileData) => {
             if (!err && fileData) {
-                
                 // check that token is not expired
-                if (fileData.expiry > Date.now()) callback(false);
+                if (fileData.expiry > Date.now() - (1000 * 60 * 60 * 24)) callback(false, fileData);
                 else callback(401, 'token has expired');
             }
             else callback(401, 'token missing');
