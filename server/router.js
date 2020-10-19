@@ -7,6 +7,7 @@ const users = require('../api/users');
 const tokens = require('../api/tokens');
 const cart = require('../api/cart');
 const menu = require('../api/menu');
+const orders = require('../api/orders');
 
 // router object - returns the routes request method function
 const router = {
@@ -16,6 +17,7 @@ const router = {
     tokens: (requestData, callback) => executeRequest(tokens, requestData, callback),
     cart: (requestData, callback) => executeRequest(cart, requestData, callback),
     menu: (requestData, callback) => executeRequest(menu, requestData, callback),
+    orders: (requestData, callback) => executeRequest(orders, requestData, callback),
     ping: (data, cb) => cb(200),
     notfound: (data, cb) => cb(404),
 };

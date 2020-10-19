@@ -142,7 +142,7 @@ users.delete = (data, callback) => {
 
                                 // loop and delete all orders
                                 orders.forEach(order => {
-                                    libData.delete('orders', `${email}-${order}`, err => {
+                                    libData.delete('orders', email, err => {
                                         if (err) errors++;
                                     });
                                 });

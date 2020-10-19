@@ -72,7 +72,10 @@ cart.post = (data, callback) => {
                             }
 
                             // if nothing updated push new item
-                            if (!updatedQuantity) userData.cart.push(items[itemID]);
+                            if (!updatedQuantity) {
+                                items[itemID].quantity = 1;
+                                userData.cart.push(items[itemID])
+                            };
 
                         }
                         else userData.cart.push(items[itemID])

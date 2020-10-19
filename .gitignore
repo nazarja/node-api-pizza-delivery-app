@@ -1,2 +1,4 @@
 https/cert.pem
 https/key.pem
+config/mailgun.js
+config/stripe.js
