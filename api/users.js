@@ -121,7 +121,7 @@ users.put = (data, callback) => {
 // delete user and associated orders
 users.delete = (data, callback) => {
     const { token } = data.headers;
-    const { email } = data.payload;
+    const { email, password } = data.payload;
 
     // perform auth check for token and email
     tokens.authCheck(token, email, err => {
@@ -131,30 +131,31 @@ users.delete = (data, callback) => {
             libData.read('users', email, (err, fileData) => {
 
                 if (!err && fileData) {
-
-                    libData.delete('users', email, err => {
-                        if (!err) {
-
-                            // if no errors, try to delete orders
-                            const orders = fileData.orders;
-                            if (orders.length) {
-                                let errors = 0;
-
-                                // loop and delete all orders
-                                orders.forEach(order => {
-                                    libData.delete('orders', email, err => {
-                                        if (err) errors++;
+                    if (helpers.hash(password === fileData.password)) {
+                        libData.delete('users', email, err => {
+                            if (!err) {
+    
+                                // if no errors, try to delete orders
+                                const orders = fileData.orders;
+                                if (orders.length) {
+                                    let errors = 0;
+    
+                                    // loop and delete all orders
+                                    orders.forEach(order => {
+                                        libData.delete('orders', email, err => {
+                                            if (err) errors++;
+                                        });
                                     });
-                                });
-
-                                // if any errors occured, otherwise callback 200 ok
-                                if (errors) callback(500, { 'error': 'error deleting all users orders' })
-                                else callback(200);
-                            };
-
-                        }
-                        else callback(500, { 'error': 'error deleting the user' })
-                    })
+    
+                                    // if any errors occured, otherwise callback 200 ok
+                                    if (errors) callback(500, { 'error': 'error deleting all users orders' })
+                                    else callback(200);
+                                };
+    
+                            }
+                            else callback(500, { 'error': 'error deleting the user' })
+                        })
+                    }
                 }
             })
         }
