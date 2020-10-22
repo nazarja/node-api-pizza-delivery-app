@@ -58,14 +58,26 @@ server.unifiedServer = (req, res) => {
         };
 
         // handle route request
-        routehandler(requestData, (statusCode, payload) => {
+        routehandler(requestData, (statusCode, payload, contentType) => {
+            contentType = typeof (contentType) === 'string' ? contentType : 'json';
             statusCode = typeof (statusCode) === 'number' ? statusCode : 200;
-            payload = typeof (payload) === 'object' ? payload : {};
-            payload = JSON.stringify(payload);
+            payloadString = '';
 
-            // end request and send back header and payload / response
+            // return content specific parts
+            if (contentType === 'json') {
+                res.setHeader('Content-Type', 'application/json');
+                payload = typeof (payload) === 'object' ? payload : {};
+                payloadString = JSON.stringify(payload);
+            }
+
+            if (contentType === 'html') {
+                res.setHeader('Content-Type', 'text/html');
+                payloadString = typeof (payload) === 'string' ? payload : '';
+            }
+
+            // return all common response parts
             res.writeHead(statusCode);
-            res.end(payload);
+            res.end(payloadString);
         });
     });
 };
@@ -85,7 +97,7 @@ server.init = () => {
 
     // https server listener
     server.httpsServer.listen(
-        config.port.https, 
+        config.port.https,
         () => console.log(`Server listening on: https://localhost:${config.port.https}/ | ${config.env}`)
     );
 };

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ head.description }}" />
+    <base href="{{ global.baseURL }}" />
+    <link type="image/x-icon" rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="public/styles.css" />
+    <title>{{ head.title }} | {{ global.appName }}</title>
+</head>
+<body class="{{ body.class }}">
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+        <!-- Header -->
+        <div class="header">
+            
+            <!-- logo -->
+            <a href="/" class="logo"></a>
+            
+            <!-- Menu -->
+            <ul class="menu">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li class="loggedIn">
+                    <a href="/">Menu</a>
+                </li>
+                <li class="loggedIn">
+                    <a href="/">Cart</a>
+                </li>
+                <li class="loggedIn">
+                    <a href="/">Account</a>
+                </li>
+                <li class="loggedOut">
+                    <a href="/">Login</a>
+                </li>
+                <li class="loggedIn">
+                    <a href="/">Logout</a>
+                </li>
+                <li class="loggedOut">
+                    <a href="/">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Page Content -->
+        <div class="content">
